@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-
+using System;
+using FisherInsurance.Models;
 public class LifeController : Controller {
 
     public IActionResult Index(){
@@ -7,6 +8,9 @@ public class LifeController : Controller {
     }
 
     public IActionResult Quote(){
-        return Ok("Life Controller Quote Section");
+        Quote quote = new Quote
+        {Id = 345, Product = "Life Insurance", ExpireDate = DateTime.Now.AddDays(45), Price = 45.00M};
+        
+        return View(quote);
     }
 }
